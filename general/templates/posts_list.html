@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список записей</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Список записей{% endblock %}
+
+{% block content %}
     <h1>Список записей</h1>
     <ul>
     {% for post in posts %}
         <li>
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.body }}</p>
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <p><a href="{{ post.get_absolute_url }}">{{ post.body }}</p>
             <p>Автор: {{ post.author }}</p>
             <p>Дата создания: {{ post.created_at }}</p>
             <p>Теги: 
@@ -25,5 +22,4 @@
         </li>
     {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
